@@ -1,0 +1,7 @@
+{
+  "name": "ASTRA-X - On-Board AI Activity Recognition for Space Experiments",
+  "description": "Autonomous On-board AI Human Activity Recognition & Protocol Intelligence for Bio-Astronautics Science (BAS) experiments with real-time deviation detection, voice guidance, and mission replay.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

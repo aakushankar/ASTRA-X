@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile containing operator metadata, clearance, callsign, and role",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "callsign": { "type": "string" },
+        "role": { "type": "string", "enum": ["astronaut", "payload_specialist", "flight_director", "supervisor"] },
+        "missionDesignation": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "MissionLog": {
+      "title": "MissionLog",
+      "description": "Logged mission events and protocol validations for the user session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "missionTimeSec": { "type": "number" },
+        "protocolId": { "type": "string" },
+        "expectedStepCode": { "type": "string" },
+        "observedStepCode": { "type": "string" },
+        "status": { "type": "string" },
+        "deviationType": { "type": "string" },
+        "confidence": { "type": "number" },
+        "audioDispatched": { "type": "string" },
+        "explanation": { "type": "string" }
+      },
+      "required": ["userId", "timestamp", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "entity": "UserProfile",
+      "description": "User profile documents keyed by Auth UID"
+    },
+    "/users/{userId}/mission_logs/{logId}": {
+      "entity": "MissionLog",
+      "description": "User-specific mission logs and blackbox flight events"
+    }
+  }
+}
